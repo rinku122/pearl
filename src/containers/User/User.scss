@@ -1,0 +1,675 @@
+input, button{
+    outline: none !important; 
+}
+.loginContainer{
+    height: 100vh;
+    background:url(../../images/bg_login.jpg) repeat ;
+    @media(max-width:1400px){
+    .ui.container{
+        width: 100%;
+        max-width: 960px !important;
+            @media(max-width:767px){
+                width: 98%;
+            }
+        }    
+    }    
+    &.ui.container{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .ui.input{width: 100%;}
+}
+.main_loginForm{
+    position: absolute;
+    left:0;
+    right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    top:50%;
+    transform: translateY(-50%);
+    @media(max-width:767px){
+        position: relative;
+        top:0px;
+        transform: translateY(0);
+        padding-top: 20px;
+        margin-bottom: 20px;
+    }
+    .loginForm{
+        margin-top: 20px;
+        box-shadow:none;
+        border-radius: 10px;
+        overflow: hidden;
+        p.login-with-text-style{
+            font-size: 16px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+    .logoStyle{
+        display: flex;
+        justify-content: center;
+             img{
+                margin-bottom: 15px;
+                width: 173px;
+            @media(max-width:1400px){
+                    margin-bottom: 6px;
+            }
+            @media(max-width:767px){
+                margin-bottom: 20px;
+                width: 210px;
+            }
+        }
+ } 
+   .loginformBox{
+        border:1px solid #eaf0f3;
+        padding:40px 80px;
+        display: flex;
+        max-width: 650px;
+        margin: 0 auto;
+        background: #eaf0f3;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 10px;
+        color: #000;
+        font-size: 16px;
+        @media(max-width:1400px){
+            padding:30px;
+        }
+        @media(max-width:960px){
+            padding:15px;
+        }
+        @media(max-width: 767px){
+            margin-bottom: 20px;
+            border-radius:  0 0 10px 10px;
+        }
+        p.toViewAccountStyle{
+            text-align: center;
+            color: #000;
+        }
+        h2{
+            color:#000;
+            font-size: 24px;
+            font-weight: 400;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+            @media(max-width:1400px){
+                font-size: 18px;
+            }
+            @media(max-width:767px){
+                margin-top: 5px;
+            }  
+            .sub.header{
+                margin-top: 15px;
+                color:#000;
+                font-size: 16px;
+                text-transform: none;
+                @media(max-width:767px){
+                    font-size: 18px;
+                } 
+            }
+        }
+        form{
+           width: 100%;
+            .form-group{
+                &.reg{
+                    input{
+                        text-align: left;
+                    }
+                }
+                label{
+                    font-size: 14px;
+                    margin-bottom: 10px;
+                    font-weight: 500;
+                    color: #222;
+                    a{
+                        color: #fe0100;
+                    }
+                }
+                input{
+                    font-size: 16px;
+                    color:#000;
+                    background: transparent;
+                    text-align: center;
+                    border-radius: 25px;
+                    height: 52px;
+                    width: 100%;
+                    border:2px solid #000 !important;
+                    &:focus, &:hover, &::placeholder{
+                        color:#000;
+                    }
+                }
+                &.loginBtn{
+                    text-align: center;
+                    margin-bottom: 15px;
+                    &.automatic{
+                        margin-bottom: 25px;
+                    }
+                    button{
+                        margin-top: 10px;
+                        cursor: pointer;
+                        font-size: 16px;
+                        width: 280px;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        background:#fe0100;
+                        border:1px solid #fe0100;
+                        height:52px;
+                        border-radius:25px;
+                        color:#fff;
+                        box-shadow: 0 1px 4px rgba(0,0,0,.1),0 2px 6px rgba(0,0,0,.1);
+                    }
+                }
+            }
+
+        }
+        h4.totalUsers, h4.ui.header.totalUsers{
+            margin-top: 106px;
+            text-align: center;
+            font-size: 16px;
+            color: #acacac;
+            font-weight: 400;
+            .sub.header{
+                margin-top: 15px;
+                color:#fe0100;
+                font-size: 36px;
+                text-transform: none;
+            }
+        }   
+        p{
+            a{
+                color:#fe0100; 
+            }
+        }       
+    }
+    .messageTransaction{
+        position: relative;
+        padding-left: 75px;
+        padding-bottom: 0 !important;
+        background-color: transparent;  
+        margin-top: 20px;
+        @media(max-width:767px){
+            margin: 20px auto 10px;
+            width: 300px;
+        }
+        &:before {
+            display: block;
+            position: absolute;
+            left: 0;
+            top:50%;
+            transform: translateY(-50%);
+            content: '';
+            background: url(../../images/icon_transSuccess.svg) no-repeat !important;
+            width:54px;
+            height: 54px;
+        }
+        .header{
+            font-size: 18px;
+            color: #000;
+            font-weight: 400;
+            @media(max-width:1400px){
+                font-size: 14px;
+            }
+            @media(max-width:767px){
+                font-size: 14px;
+            }
+        }
+    }
+}
+.msg {
+    border-radius: 2px;
+    padding: 8px;    
+    text-align: center;
+    color: #fff;
+}
+.scuess {
+    border: 1px solid rgb(80, 235, 9);
+    border-radius: 2px;
+    padding: 8px;
+    background: #fff;
+    text-align: center;
+}
+.blockDiv {
+   display: none;
+}
+.closeBtn {
+    float: right;
+    margin-right: 11px;
+    color: #fff;
+    display: none;
+    @media(max-width: 767px){
+        display: block;
+    }
+}
+.seleboxLogin{
+    position: relative;
+    &:after{
+      position: absolute;
+      content: "";
+      top:24px;
+      right: 18px;
+      width: 0; 
+      height: 0; 
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #113859;
+    }
+  select{
+        font-size: 16px !important;
+        color:rgba(0, 0, 0, 0.849) !important;
+        background: transparent !important;
+        height: 50px !important;
+        border: 1px solid #ddd !important;  
+        border-radius: 25px !important;
+        font-weight: 400;
+        float: right;
+        text-align: left;
+        appearance: none;
+          @media(max-width:767px){
+              font-size: 16px!important;
+              min-width: 120px;
+              padding: 10px 0;
+              height: 42px !important;
+              height: auto;   
+          }
+          &.invest{
+              color: #fff;
+              background:#d73852;
+              border-radius: 6px;
+              border:1px solid #d73852;
+          }
+      }
+  }
+  .loginWarning{
+    color:#000;
+    text-align: center;
+    margin-top:30px !important;
+  }
+
+
+
+// input, button{
+//     outline: none !important; 
+// }
+// .loginContainer{
+//     @media(max-width:1400px){
+//     .ui.container{
+//         @media(max-width:767px){
+//         }
+//      }    
+//     }    
+//     &.ui.container{
+//         margin-left: 0 !important;
+//         margin-right: 0 !important;
+//     }
+//     .ui.input{width: 100%;}
+// }
+// .main_loginForm{
+//     position: absolute;
+//     left:0;
+//     right: 0;
+//     padding-left: 1rem;
+//     padding-right: 1rem;
+//     top:50%;
+//     transform: translateY(-50%);
+//     @media(max-width:1400px){
+//         transform: translateY(-56%);
+//     }
+    
+//     @media(max-width:767px){
+//         position: relative;
+//         top:0px;
+//         transform: translateY(0);
+//         padding-top: 20px;
+//         margin-bottom: 20px;
+//     }
+//     .loginForm{
+//         margin-top: 122px;
+//         border-radius: 10px;
+//         overflow: hidden;
+//         box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.41); 
+//         @media(max-width: 767px){
+//             flex-direction: column;
+//             box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.41); 
+//             p.login-with-text-style{
+//                 font-size: 16px;
+//                 text-align: center;
+//             }
+//         }
+        
+//     }
+//     .logoStyle{
+//         margin-bottom: 20px;
+//         width: 250px;
+
+//        @media(max-width:1400px){
+//             margin-bottom: 6px;
+//             width: 200px;
+//        }
+//        @media(max-width:767px){
+//         margin-bottom: 20px !important;
+//         width: 200px;
+//      }
+//     } 
+
+//     @media(max-width:767px){
+//     .ui.column.grid>[class*="six wide"].column, 
+//     .ui.grid>.column.row>[class*="six wide"].column, .ui.grid>.row>[class*="six wide"].column, 
+//     .ui.grid>[class*="six wide"].column{
+//         width: 100% !important;
+//     }
+//     .ui.column.grid>[class*="ten wide"].column, 
+//     .ui.grid>.column.row>[class*="ten wide"].column, 
+//     .ui.grid>.row>[class*="ten wide"].column, 
+//     .ui.grid>[class*="ten wide"].column{
+//         width: 100% !important;
+//     }
+//     }
+
+//     .six.column.loginform_left{
+//         background: #010039;
+//         padding:60px 30px;
+
+//         @media(max-width:1400px){
+//             padding:30px;
+//         }
+//         @media(max-width:960px){
+//             padding:15px;
+//         }
+//         @media(max-width: 767px){
+//             margin-bottom: 20px;
+//             border-radius:  0 0 10px 10px;
+//         }
+
+//         p.toViewAccountStyle{
+//             text-align: center;
+//             color: #fff;
+//         }
+
+    
+//         h2.loginTitle, h2.ui.header.loginTitle{
+//             color:#ff0000;
+//             font-size: 24px;
+//             font-weight: 700;
+//             text-transform: uppercase;
+//             text-align: center;
+//             margin-bottom: 20px;
+
+//             @media(max-width:1400px){
+//                 font-size: 18px;
+//             }
+//             @media(max-width:767px){
+//                 margin-top: 5px;
+//                 font-size: 25px;
+//             }  
+
+//             .sub.header{
+//                 margin-top: 15px;
+//                 color:#fff;
+//                 font-size: 16px;
+//                 text-transform: none;
+//                 @media(max-width:767px){
+//                     font-size: 18px;
+//                 } 
+//             }
+//         }
+//         .ui.form{
+//             @media(max-width:767px){
+//                 margin: 0 auto;
+//                 max-width: 500px;
+//             }
+//             .field{
+//                 input{
+//                     font-size: 16px;
+//                     color:#333;
+//                     background: #fff;
+//                     text-align: center;
+//                     border:1px solid #fff;
+//                     border-radius: 25px;
+//                     height: 50px;
+                    
+//                     @media(max-width:1400px){
+//                         height: 41px;
+//                         font-size: 14px;
+//                     }
+//                 }
+//                 &.automatic{
+//                     margin-bottom: 50px;
+//                     button{
+//                         background-image: linear-gradient(#ef487c, #9046e7) !important;
+//                         border:0px solid #f9910d !important;
+//                     }
+//                 }
+
+//                 &.loginBtn{
+//                     text-align: center;
+
+//                     button{
+//                         margin-top: 10px;
+//                         font-size: 16px;
+//                         width: 190px;
+//                         text-transform: uppercase;
+//                         font-weight: 400;
+//                         background:#0da6df;
+//                         border:1px solid #0da6df;
+//                         height:44px;
+//                         border-radius:25px;
+//                         color:#fff;
+
+//                     }
+//                 }
+//             }
+
+//         }
+//         h4.totalUsers, h4.ui.header.totalUsers{
+//             margin-top: 106px;
+//             text-align: center;
+//             font-size: 16px;
+//             color: #acacac;
+//             font-weight: 400;
+//             .sub.header{
+//                 margin-top: 15px;
+//                 color:#2e77bc;
+//                 font-size: 36px;
+//                 text-transform: none;
+//             }
+//         }          
+//     }
+//     .ten.column.loginform_Right{
+//         padding:60px 123px;
+//         background: #010039;
+//         position: relative;
+//         &:before{
+//             position: absolute;
+//             left: 46px;
+//             top:5%;
+//             width: 1px;
+//             height: 90%;
+//             content: "";
+//             background: #0da6df;
+//             @media(max-width:1400px){
+//                 left: 14px;
+//             }
+//             @media(max-width:767px){
+//                 display: none;
+//             }
+//         }
+
+//         @media(max-width:1400px){
+//             padding:30px 60px;
+//         }
+//         @media(max-width:767px){
+//             padding:15px 20px;
+//             padding-top:30px;
+//             border-radius: 10px 10px 0 0;
+//         }
+
+//         h2.regTitle, h2.ui.header.regTitle{
+//             color:#ff0000;
+//             font-size: 24px;
+//             font-weight: 700;
+//             text-transform: uppercase;
+//             margin-bottom: 26px;  
+//             text-align: center;
+//             @media(max-width:1400px){
+//                 font-size: 25px;
+//             } 
+//         }
+//         .ui.form{
+//             @media(max-width:767px){
+//                 margin: 0 auto;
+//                 max-width: 500px;
+//             }
+//             .field{
+//                 @media(max-width:767px){
+//                     margin-bottom: 15px;
+//                 }
+//                 label{
+//                    font-size: 16px;
+//                    color: #fff;
+//                    font-weight: 400; 
+//                    margin-bottom: 5px;
+//                    text-align: center;
+//                    a{
+//                        color: #003399 !important;
+//                    }
+//                    @media(max-width:1400px){
+//                         font-size: 14px;
+//                     }
+//                 }
+//                 input{
+//                     font-size: 16px;
+//                     color:#333333;
+//                     background: #fff;
+//                     border: 1px solid #fff;
+//                     background: #fff;
+//                     height: 50px;
+//                     border-radius: 25px;
+//                     font-weight: 400;
+//                     text-align: center;
+//                     &:focus{
+//                         background: #dfdfdf;
+//                         color:#000;
+//                     }
+                    
+//                     @media(max-width:1400px){
+//                         height: 41px;
+//                         font-size: 14px;
+//                     }
+//                 }
+
+//                 &.loginBtn{
+//                     text-align: center;
+
+//                     button{
+//                         margin-top: 10px;
+//                         font-size: 16px;
+//                         width: 156px;
+//                         text-transform: uppercase;
+//                         font-weight: 600;
+//                     }
+//                 }
+//                 &.regBtn{
+//                     text-align: center;
+//                     @media(max-width:890px){
+//                         text-align: center !important;
+//                     }
+
+//                     button{
+//                         margin-top: 10px;
+//                         font-size: 16px;
+//                         width: 100%;
+//                         text-transform: uppercase;
+//                         font-weight: 400;
+//                         background:#0da6df;
+//                         border:1px solid #0da6df;
+//                         height:44px;
+//                         border-radius:25px;
+//                         color:#fff;
+//                         @media(max-width: 767px){
+//                            width: 200px;
+//                         }
+//                     }                   
+//                 }
+//             }
+//         }
+//         .ui.message.messageTransaction{
+//             border-width: 0px;
+//             box-shadow: none;
+//             border-radius: 0;  
+//             background-color: transparent;         
+//             @media(max-width:1400px){
+//                 padding:0px;
+//             }
+//             .ui.message>.icon {
+//                 margin-right: 0.2em;
+//             }
+//             @media(max-width:1400px){
+//                 i.icon{
+//                     margin-right: 10px;
+//                 }
+//             }
+//             @media(max-width:767px){
+//                 margin: 20px auto 10px;
+//                 width: 300px;
+//             }
+//             i.icon.inbox:before {
+//                 display: block;
+//                 content: '';
+//                 background: url(../../images/icon_transSuccess.svg) no-repeat !important;
+//                 width:54px;
+//                 height: 54px;
+//                 @media(max-width:1400px){
+//                     width: 40px;
+//                     height: 40px;
+//                     background-size: 100% !important;
+//                 }
+//                 @media(max-width:767px){
+//                     width: 50px;
+//                     height: 50px;
+//                     background-size: 100% !important;
+//                     margin-right: 0px;
+//                 }
+//             }
+//             .header{
+//                 font-size: 20px;
+//                 color: #ffff;
+//                 font-weight: 400;
+//                 font-family: Arial, Helvetica, sans-serif;
+//                 @media(max-width:1400px){
+//                     font-size: 14px;
+//                 }
+//             }
+//         }
+//     }
+// }
+// .msg {
+//     border-radius: 2px;
+//     padding: 8px;    
+//     text-align: center;
+//     color: #fff;
+// }
+// .scuess {
+//     border: 1px solid rgb(80, 235, 9);
+//     border-radius: 2px;
+//     padding: 8px;
+//     background: #fff;
+//     text-align: center;
+// }
+// .blockDiv {
+//    display: none;
+// }
+// .closeBtn {
+//     float: right;
+//     margin-right: 11px;
+//     color: #fff;
+//     display: none;
+//     @media(max-width: 767px){
+//         display: block;
+//     }
+// }
+// .login-with-text-style{
+//     color: #fff;
+//     text-align: center;
+// }

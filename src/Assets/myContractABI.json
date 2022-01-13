@@ -1,0 +1,206 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "referrerAddress",
+				"type": "address"
+			}
+		],
+		"name": "registration",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"name": "pool",
+				"type": "uint8"
+			}
+		],
+		"name": "getUserDetails",
+		"outputs": [
+			{
+				"name": "userIncome",
+				"type": "uint256"
+			},
+			{
+				"name": "userId",
+				"type": "uint256"
+			},
+			{
+				"name": "poolActiveStatus",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "isUserExists",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "currentUserId",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "userId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "referrerId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "referralCount",
+				"type": "uint256"
+			}
+		],
+		"name": "Registration",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "referrerAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "level",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "position",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "pool",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "reinvestCount",
+				"type": "uint256"
+			}
+		],
+		"name": "UpdateMatrix",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "receiver",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "receiverId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "pool",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "level",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "levelReferralCount",
+				"type": "uint256"
+			}
+		],
+		"name": "LevelIncome",
+		"type": "event"
+	}
+]

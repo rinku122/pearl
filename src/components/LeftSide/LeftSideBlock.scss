@@ -1,0 +1,413 @@
+.leftBar {
+    left:0px;
+    top:0px;
+    width: 100%;
+    min-width: 350px;
+    max-width: 350px;
+    z-index: 10;
+    transition: all .35s;
+    background: #fff ;
+    padding: 0 20px;
+    @media(max-width:1366px){
+        padding: 0 15px;
+    }
+    @media(max-width:991px){
+        padding: 0px;
+        background: transparent;
+        
+    }
+    @media(max-width:812px){
+        left:-100%;
+        min-width: 221px;
+        max-width: 221px;
+    
+        &.isShow{
+            left:0;
+        }
+    }
+    h2.navHeading{
+        display: none;
+        padding:16px 0 0 48px;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: #abafb3;
+        box-sizing: border-box;
+        @media(max-width:991px){
+            display: block !important;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 0 !important;
+            .headerLeft{
+                display: none !important;
+            }
+            .headerTop{
+                background: transparent;
+                position: absolute;
+                top:15px;
+            }
+        }
+    }
+
+    .left_logoBlock{
+        margin-top: 22px;
+        margin-bottom: 15px;
+        padding: 15px 0px;
+        background: #06061e;
+        border-radius: 10px;
+        @media(max-width:991px){
+            margin-top: 0px;
+            background: transparent;
+            margin-bottom: 0 !important;
+           
+        }
+        .logoBlock{
+            text-align: center;
+        }
+        img{
+           max-width: 100%;
+        }
+    }   
+    .sidebarNav{
+        margin-bottom: 28px; 
+    }
+    .sn_identity {
+        color: #000;
+        border-radius: 10px;
+        box-sizing:border-box;
+        padding:20px;
+        margin-bottom:28px;
+        background: #06061e;
+        @media(max-width:991px){
+            background: #fff;
+        }
+        .sn_identity_top{
+            display: flex;
+            margin-bottom: 30px;
+            justify-content: space-between;
+            align-items: center;
+            .tron{
+                width: 90px;
+                @media(max-width:991px){
+                    width: 100px;
+                }
+            }
+        }
+        @media(max-width:1366px){
+            margin-bottom: 10px
+        }
+        label{
+            background: #e80001;
+            width: 100%; 
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 10px;
+        }
+    }
+    .sn_identity h2{
+        font-size:24px;
+        font-weight:400;
+        text-align: center;
+        span{
+            margin:0 10px;
+        }
+    }
+    
+    .sn_identity ul{
+        margin:0px;
+        padding:0px;
+        display:flex;
+        justify-content:flex-end;
+        flex-direction: column;
+        text-align: end;
+    }
+    .sn_identity ul li{
+        display:flex;
+        flex-direction:column;
+        margin-top: 0px;
+        @media(max-width:991px){
+            color: #000;
+        }
+        &:last-child{
+            strong{
+                color:#fff;
+                font-weight: 700;
+                @media(max-width:991px){
+                    color: #000;
+                }
+            }
+        }
+    }
+    
+    .sn_identity ul li strong{
+         font-size:24px;
+        font-weight:400;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color:#fff;
+        @media(max-width:991px){
+            color: #000;
+        }
+        i{
+            color: #fff;
+            font-style: normal;
+            margin-right: 5px;
+            @media(max-width:991px){
+                color: #000;
+            }
+        }
+    }
+    .sn_identity ul li span{
+         font-size:14px;
+        font-weight:700; 
+    }
+    
+    @media(max-width:1366px){
+        .sn_identity {
+            padding:15px;
+        }
+        .sn_identity h2{
+            font-size:16px;
+            font-weight:400;
+        }
+        .sn_identity ul li strong{
+             font-size:16px;
+        }
+        .sn_identity ul li span{
+             font-size:10px;        
+        } 
+    }
+    .sn_matTypeOut{
+        @media(max-width:991px){
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+        }
+    }
+    .sn_matType{
+        background: #06061e;
+        border-radius:10px;
+        padding: 15px;
+        display:flex;
+        margin-bottom: 10px;
+        flex-direction: column;
+        &.ex_bottom_margin{
+           margin-bottom:29px;
+    
+           @media(max-width: 1366px){
+               margin-bottom: 15px;
+           }
+           @media(max-width: 991px){
+                margin-bottom: 10px;
+                width: 100%;
+            }
+        }
+        @media(max-width: 1366px){
+            padding-right: 17px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        @media(max-width:991px){
+            background: #fff;
+        }
+        h2{
+            font-size: 20px;
+            font-weight: 700;
+            color:#fff;
+            margin: 0;
+            padding: 0;
+            margin-right: 5px;
+            display: flex;
+            align-items: baseline;
+            .desk{
+                display: block;
+                @media(max-width:991px){
+                    display: none !important;
+                }
+            }
+            .mob{
+                display: none;
+                @media(max-width:991px){
+                    display: block !important;
+                }
+            }
+            img{
+                margin-right: 5px;
+                width: 100px !important;
+            }
+    
+            @media(max-width: 1366px){
+                font-size: 25px;
+                margin-right: 14px;
+                img{
+                    width: auto;
+                }
+                
+            }
+            @media(max-width:991px){
+                color: #000;
+            }
+        }
+        ul{
+            display: flex;
+            flex:1;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-direction: column;
+            @media(max-width:991px){
+                flex-direction: column;
+            }
+            li{
+                display: flex;
+                min-width: 100%;
+                margin-top: 3px;
+                margin-bottom: 2px;
+                font-size: 24px;
+                line-height: normal;
+                color: #fff;
+                @media(max-width:991px){
+                    color: #000;
+                }
+                span{
+                    margin-left: 4px;
+                }
+                @media(max-width:1366px){
+                    min-width: 62px;
+                }
+              
+                &:last-child{
+                    font-size: 20px ;
+                    color: #fff;
+                    line-height: 20px;
+                    margin-top: -2px;
+                    @media(max-width:991px){
+                        color: #000;
+                        &:last-child(){
+                            margin-bottom:0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .sn_LinkBar{
+        margin-bottom: 27px;
+        background: #06061e;
+        border-radius: 10px;
+        padding:2px 15px 32px 15px;   
+        @media(max-width:1366px){
+            margin-bottom: 15px;
+        }
+        @media(max-width:991px){
+            background: #fff;
+        }
+        label{
+            font-size: 17px;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom:10px;
+            margin-top: 28px;
+            @media(max-width:1366px){
+                font-size: 16px;
+            }
+            @media(max-width:991px){
+                color: #000;
+                margin-top: 15px;
+                margin-bottom: 8px;
+            }
+        }
+        .linkBlock{
+            display:flex;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 10px;
+            padding:12px 10px;
+            background: #fff;
+            @media(max-width:991px){
+                background: #000;
+            }
+            span{
+                font-size: 13px;
+                color: #000;
+                font-weight: 700;
+                overflow: hidden;
+                flex:1;
+                white-space: nowrap;
+                @media(max-width:991px){
+                    color: #fff;
+                }
+            }
+            a{
+                margin-left: 10px;
+                img{
+                    width: 12px;
+                    margin-top: 4px;
+                }
+            }
+        }
+        a.ethScanLink{
+            color:#a9d4f6;
+            font-size: 14px;
+            float: right;
+            margin-top:5px;
+        }
+    }
+}
+@media(max-width:991px){
+    .mainBlock .leftBar .left_logoBlock {
+        padding-top: 15px;     
+     }
+     .mainBlock .leftBar .sidebarNav {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;     
+         padding: 0 15px;  
+         margin-bottom: 0px; 
+     }
+     .mainBlock .leftBar .sn_identity {
+         width: 100%;
+         margin-right: 0px;
+     }    
+     .sn_LinkBar{
+         width: 100%;
+         margin-bottom: 30px;
+     }
+     .sn_matType {
+         width: 49%;
+         margin-bottom: 10px;
+         border-radius: 12px;
+     }
+     .sn_LinkBar a.ethScanLink {
+         font-size: 21px;
+     }
+    .mainBlock .leftBar .sn_identity h2 {
+        font-size: 34px;    
+    }
+    .mainBlock .leftBar .sn_identity ul li strong{
+        font-size: 24px;
+    }
+    .mainBlock .leftBar .sn_identity ul li span{
+        font-size: 17px;
+    }
+    .sn_matType h2 {
+        border-radius: 5px;
+        margin-right: 14px;
+    }
+    .sn_LinkBar .linkBlock{
+        padding: 10px 15px;
+    }
+    .sn_LinkBar .linkBlock span {
+        font-size: 14px;
+    }
+    .sn_LinkBar label {
+        font-size: 16px;
+    }
+}

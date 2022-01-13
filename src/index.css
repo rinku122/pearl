@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+body {
+  margin: 0;
+ font-family: 'Oxygen', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:url(./images/bg_login.jpg) repeat;
+}
+
+code {
+  font-family: 'Oxygen', sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Oxygen', sans-serif;
+}
+
+@media(max-width:812px){
+.TransitionList{
+  margin-top: 1em !important;
+}
+}
+
+@media(max-width:767px){
+  .TransitionList{
+    margin-top: 0em !important;
+  }
+  .ui.table{
+    box-shadow: 0 0 0 #000;
+    border:0px !important;
+  }
+  .ui.table:not(.unstackable) tr{
+    padding-bottom: 0 !important;
+  }
+  .ui.table:not(.unstackable) tr>td{
+    border-left:1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+    border-top: 1px solid #ddd !important;
+
+}
+.ui.table:not(.unstackable) tr>th{
+  border:0px !important
+}
+}
