@@ -44,19 +44,21 @@ export class ReferralSummary extends Component {
                     <Table.Cell textAlign="center">
                       Level {data.level}
                     </Table.Cell>
-                    <Table.Cell textAlign="center">{data.funds} TRX</Table.Cell>
+                    <Table.Cell textAlign="center">
+                      {data.funds} USDT
+                    </Table.Cell>
                     <Table.Cell textAlign="center">
                       {data.totalPartners}
                     </Table.Cell>
                     <Table.Cell textAlign="center">
-                      {data.potentialIncome} TRX
+                      {data.potentialIncome} USDT
                     </Table.Cell>
                     <Table.Cell textAlign="center">{data.referrals}</Table.Cell>
                     <Table.Cell textAlign="center">
-                      {data.received} TRX
+                      {data.received} USDT
                     </Table.Cell>
                     <Table.Cell textAlign="center">
-                      {data.reward} TRX
+                      {data.reward} USDT
                     </Table.Cell>
                   </Table.Row>
                 ))

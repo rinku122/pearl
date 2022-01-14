@@ -166,7 +166,7 @@ class LeftSideBlock extends Component {
               </ul>
             </div>
             {/* <label>{totalIncome.toFixed(2)} TRX</label> */}
-            <label>{userDetails.totalIncome} TRX</label>
+            <label>{userDetails.totalIncome} USDT</label>
           </div>
           <div className="sn_matTypeOut">
             <div className="sn_matType ex_bottom_margin">

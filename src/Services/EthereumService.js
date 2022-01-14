@@ -140,6 +140,12 @@ const getUsers = (address, pool) => {
 const registration = (upline, address) => {
   return new Promise(async (resolve, reject) => {
     try {
+      let userTRX = await tronWeb.trx.getAccount(address);
+      userTRX = userTRX.toString();
+      if (Number(userTRX) <= 0) {
+        throw 'Zero Trons';
+      }
+
       const contract = await callContract();
       const contractUSDT = await callContractUSDT();
       let userBalance = await contractUSDT.balanceOf(address).call();
@@ -152,29 +158,29 @@ const registration = (upline, address) => {
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
       );
       if (registrationFees > userBalance) {
-        throw 'Insufficient balance';
+        throw 'Insufficient USDT';
       }
       const feeLimit = 1000000000; //sun value
 
       let callValue = 0;
-
+      const value = '100000000000000';
       contractUSDT
-        .approve(CONTRACT_ADDRESS, registrationFees)
+        .approve(CONTRACT_ADDRESS, value)
         .send({ feeLimit, callValue, shouldPollResponse: false })
         .then((result) => {
           console.log('result of approval', result);
           if (result) {
-            console.log(registrationFees, upline);
             contract
               .registration(upline, registrationFees)
-              .send({ feeLimit, callValue, shouldPollResponse: false })
+              .send({ feeLimit, callValue, shouldPollResponse: true })
               .then((regResult) => {
                 console.log('result of registration', regResult);
                 resolve(regResult);
               })
               .catch(reject);
           }
-        });
+        })
+        .catch(reject);
     } catch (error) {
       reject(error);
     }
@@ -269,10 +275,12 @@ const unLockLevel = (address) => {
     try {
       const contract = await callContract();
       const callValue = await getAmount(address);
+      console.log(callValue, 'callValue');
       const feeLimit = 1000 * 10 ** 6; //sun value
+      let CALLVALUE = 0;
       contract
-        .purchaseLevel()
-        .send({ feeLimit, callValue, shouldPollResponse: true })
+        .purchaseLevel(callValue)
+        .send({ feeLimit, CALLVALUE, shouldPollResponse: true })
         .then((result) => {
           resolve(result);
         })

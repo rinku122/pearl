@@ -38,13 +38,8 @@ class Header extends Component {
   };
 
   render() {
-    const {
-      totals,
-      totalParticipants,
-      history,
-      userDetails
-    } = this.props;
-    const {totalTrxValueInUsd}=this.state
+    const { totals, totalParticipants, history, userDetails } = this.props;
+    const { totalTrxValueInUsd } = this.state;
     //console.log(userDetails,'==================userDetails')
     // this.setState({totalTrxValueInUsd:totals.singletrx *  totals.usd})
     return (
@@ -74,20 +69,30 @@ class Header extends Component {
             </li> */}
             <li>
               <strong>{totals?.usd || 0}</strong>
-              <span>Total deposit TRX</span>
+              <span>Total deposit USDT</span>
             </li>
             <li>
-              <strong>{totalTrxValueInUsd ? parseFloat(totalTrxValueInUsd).toFixed(2):0}</strong>
+              <strong>
+                {totalTrxValueInUsd
+                  ? parseFloat(totalTrxValueInUsd).toFixed(2)
+                  : 0}
+              </strong>
               <span>Total earned USD</span>
             </li>
             <li>
-              <strong>{userDetails.id === '1' ?'4':userDetails.currentActivatedLevel}</strong>
+              <strong>
+                {userDetails.id === '1'
+                  ? '4'
+                  : userDetails.currentActivatedLevel}
+              </strong>
               <span>Current Level</span>
             </li>
-            {userDetails.id !== '1' && <li>
-              <strong>{userDetails.referrerId}</strong>
-              <span>Upline Id</span>
-            </li>}
+            {userDetails.id !== '1' && (
+              <li>
+                <strong>{userDetails.referrerId}</strong>
+                <span>Upline Id</span>
+              </li>
+            )}
           </ul>
         </div>
         <div className="headerRight">
