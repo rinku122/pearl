@@ -165,6 +165,7 @@ export class Homepage extends Component {
                           <div className="toplistIn ">
                             <ul className="topbox">
                               <Tree
+                                click={true}
                                 slot={1}
                                 data={allLevel ? allLevel[0] : []}
                                 klass={'levelOne'}
@@ -172,6 +173,7 @@ export class Homepage extends Component {
                             </ul>
                             <ul>
                               <Tree
+                                click={true}
                                 slot={2}
                                 data={allLevel ? allLevel[1] : []}
                                 klass={''}
@@ -179,6 +181,7 @@ export class Homepage extends Component {
                             </ul>
                             <ul className="lastrow">
                               <Tree
+                                click={true}
                                 data={allLevel ? allLevel[2] : []}
                                 slot={3}
                                 klass={''}
@@ -186,6 +189,7 @@ export class Homepage extends Component {
                             </ul>
                             <ul className="lastbox">
                               <Tree
+                                click={true}
                                 data={allLevel ? allLevel[3] : []}
                                 slot={4}
                                 klass={''}
@@ -198,6 +202,7 @@ export class Homepage extends Component {
                           <li className="leveltwo">PARTNER AT LEVEL 2</li>
                           <li className="levelthree">PARTNER AT LEVEL 3</li>
                           <li className="levelfour">PARTNER AT LEVEL 4</li>
+                          <li className="levelfive">PARTNER AT LEVEL 5</li>
                         </ul>
                       </div>
                     </Grid.Row>

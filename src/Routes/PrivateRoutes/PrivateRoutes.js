@@ -8,6 +8,7 @@ import Userlevel from '../../containers/Userlevel/Userlevel';
 import Partners from '../../containers/Transaction/Partners';
 import LeftSideBlock from '../../components/LeftSide/LeftSideBlock';
 import Header from '../../components/Header/Header';
+import LevelFive from './../../containers/Home/LevelFive';
 
 class PrivateRoutes extends Component {
   state = {};
@@ -35,6 +36,11 @@ class PrivateRoutes extends Component {
               exact={true}
             />
             <Route
+              path={`${HOME_ROUTE}auth/level/`}
+              component={LevelFive}
+              exact={true}
+            />
+            <Route
               path={`${HOME_ROUTE}auth/userLevel/:address/:level/:matrix/:reinvest?`}
               component={Userlevel}
               exact={true}
@@ -45,14 +51,5 @@ class PrivateRoutes extends Component {
     );
   }
 }
-const mapStateToProps = (state, ownProps) => {
-  return {
-    isLeftbar: state.persist.isLeftbar,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
 
 export default withRouter(PrivateRoutes);

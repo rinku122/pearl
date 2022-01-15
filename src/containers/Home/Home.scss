@@ -1588,6 +1588,11 @@ a {
         background: green;
       }
     }
+    &.levelfive {
+      &:before {
+        background: orange;
+      }
+    }
   }
 }
 
@@ -1595,6 +1600,7 @@ a.selected_field1 {
   background-color: #2b88b1ed;
   color: #fff;
 }
+
 a.selected_field2 {
   background-color: yellow;
   color: #fff;
