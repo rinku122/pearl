@@ -940,15 +940,20 @@ export function unLockLevel() {
       if (r) {
         const res = await dispatch(users(address));
         if (res) {
+          console.log('i raaaaaaaaaaaaannnnn>>>>>>>>>>>>>>>>>>>>>>> success');
           toast.success('Upgraded To Next Level');
           window.location.reload(1);
         } else {
+          console.log('i raaaaaaaaaaaaannnnn>>>>>>>>>>>>>>>>>>>>>>> err1');
+          dispatch(stopLoading());
           toast.error('SomeThing Went Wrong');
-          window.location.reload(1);
+          // window.location.reload(1);
         }
       } else {
+        dispatch(stopLoading());
+        console.log('i raaaaaaaaaaaaannnnn>>>>>>>>>>>>>>>>>>>>>>> err2');
         toast.error('SomeThing Went Wrong');
-        window.location.reload(1);
+        // window.location.reload(1);
       }
     } catch (error) {
       dispatch(stopLoading());

@@ -10,6 +10,7 @@ const initialState = {
   tronAdress: '',
   referrals: [],
   amount: '0',
+  level5: [],
   ethU5Price: [
     {
       poolPrice: '250',
@@ -296,6 +297,7 @@ const ethereum = (state = initialState, action) => {
         ...state,
         amount: action.data,
       };
+
     case actionTypes.LOGOUT_ETHEREUM:
       return initialState;
     default:

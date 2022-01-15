@@ -61,7 +61,7 @@ export class MemberInfo extends Component {
     return (
       <div className="teamRight_block summaryTable">
         <Header as="h3">Member Dashboard </Header>
-        {userDetails.currentActivatedLevel !== '4' && (
+        {userDetails.currentActivatedLevel !== '5' && (
           <div className="member_dashboard">
             <label style={{ color: 'white' }}>Value</label>
             <input type="number" value={amount} min={0} readOnly={true}></input>
@@ -69,7 +69,7 @@ export class MemberInfo extends Component {
         )}
 
         <List className="memberinfo">
-          {userDetails.currentActivatedLevel !== '4' && (
+          {userDetails.currentActivatedLevel !== '5' && (
             <List.Item>
               <p></p>
               {/* <p className="profile">
