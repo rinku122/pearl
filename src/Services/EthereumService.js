@@ -140,12 +140,6 @@ const getUsers = (address, pool) => {
 const registration = (upline, address) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let userTRX = await tronWeb.trx.getAccount(address);
-      userTRX = userTRX.toString();
-      if (Number(userTRX) <= 0) {
-        throw 'Zero Trons';
-      }
-
       const contract = await callContract();
       const contractUSDT = await callContractUSDT();
       let userBalance = await contractUSDT.balanceOf(address).call();
@@ -157,22 +151,23 @@ const registration = (upline, address) => {
       registrationFees = String(
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
       );
-      if (registrationFees > userBalance) {
-        throw 'Insufficient USDT';
-      }
+      // if (registrationFees > userBalance) {
+      //   throw 'Insufficient USDT';
+      // }
       const feeLimit = 1000000000; //sun value
 
       let callValue = 0;
-      const value = '100000000000000';
+      const value =
+        '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
       contractUSDT
         .approve(CONTRACT_ADDRESS, value)
         .send({ feeLimit, callValue, shouldPollResponse: false })
         .then((result) => {
-          console.log('result of approval', result);
+          console.log('result of approval ', result);
           if (result) {
             contract
               .registration(upline, registrationFees)
-              .send({ feeLimit, callValue, shouldPollResponse: true })
+              .send({ feeLimit, callValue, shouldPollResponse: false })
               .then((regResult) => {
                 console.log('result of registration', regResult);
                 resolve(regResult);
@@ -203,6 +198,27 @@ const poolPrice = (pool) => {
     }
   });
 };
+
+const getOwner = async () => {
+  try {
+    const contract = await callContract();
+    let owner = await contract.owner().call();
+    owner = owner.toString();
+    return owner;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getInvestmentValues = async () => {
+  try {
+    const contract = await callContract();
+    let array = await contract.investmentValues().call();
+    return array.length;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Buy new pool service Meghraj
 const purchasePool = (pool) => {
   return new Promise(async (resolve, reject) => {
@@ -673,4 +689,6 @@ export const EthereumService = {
   getReferrals,
   getAmount,
   getAmount1,
+  getInvestmentValues,
+  getOwner,
 };

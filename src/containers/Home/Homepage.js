@@ -9,6 +9,7 @@ import {
   // poolPrice,
   userPlaceIncome,
 } from '../../redux/_actions/ethereum.action';
+import { EthereumService } from './../../Services/EthereumService';
 import { toast } from '../../components/Toast/Toast';
 import Tree from './innerTreeComponent';
 import leader from '../../images/leader_icon.png';
@@ -27,15 +28,27 @@ export class Homepage extends Component {
       level2: [],
       level3: [],
       level4: [],
+      level5: [],
       allLevel: [],
       totalLevelBranch: [3, 9, 27, 81],
       totalLevelDiffrent: [],
+      show: false,
     };
   }
   componentDidMount = async () => {
     const { loggedIn, getAmount, address } = this.props;
     if (loggedIn) {
+      this.checkOwner();
       this.setState({ joinPoolConfirmation: true });
+    }
+  };
+
+  checkOwner = async () => {
+    const { address } = this.props;
+    const response = await EthereumService.getOwner();
+
+    if (response !== address) {
+      this.setState({ show: true });
     }
   };
 
@@ -126,7 +139,9 @@ export class Homepage extends Component {
 
     let level4 = await userPlaceIncome(address, 4);
 
-    this.setState({ allLevel: [level1, level2, level3, level4] });
+    let level5 = await userPlaceIncome(address, 5);
+
+    this.setState({ allLevel: [level1, level2, level3, level4, level5] });
   };
 
   render() {
@@ -194,7 +209,7 @@ export class Homepage extends Component {
                       <ReferralSummary />
                     </Grid.Column>
                     <Grid.Column mobile={16} tablet={8} computer={8}>
-                      <MemberInfo />
+                      {this.state.show && <MemberInfo />}
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>

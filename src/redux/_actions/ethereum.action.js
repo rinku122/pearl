@@ -259,64 +259,68 @@ export function getUsers(address) {
 }
 
 //register user with contract using tronWeb
-export function regUserTronWeb(address, upline) {
-  return async (dispatch, getState) => {
+export const regUserTronWeb = (address, upline) => async (dispatch) => {
+  try {
     dispatch(startLoading());
-    // const value = '1100'; //trx;
-
-    return EthereumService.registration(upline, address)
-      .then(async (res) => {
-        console.log('result of approval reg', res);
-        setTimeout(async () => {
-          toast.success('Register successfully.');
-          let convertedAddress = await EthereumService.convertAddressFromHex(
-            address
-          );
-
-          await dispatch(
-            saveLogin({ address: address, convertedAddress: convertedAddress })
-          );
-          var users = await EthereumService.users(address);
-          // console.log('users', users);
-          let userDetail = {
-            id: users?.id?.toString(),
-            referrer: users.referrer,
-            totalIncome: users.totalIncome.toString(),
-            currentActivatedLevel: users.currentActivatedLevel.toString(),
-          };
-          let res = await EthereumService.users(userDetail.referrer);
-          userDetail.referrerId = res.id?.toString();
-          //await dispatch(getUserTronWeb(address));
-          await dispatch(saveUserDetails(userDetail));
-          await lastLoginDetails(dispatch, address);
-          dispatch(stopLoading());
-        }, 15000);
-      })
-      .catch(async (error) => {
-        console.log('service', error);
+    await EthereumService.registration(upline, address);
+    setTimeout(async () => {
+      const response = await UserService.checkUser(address);
+      if (response && response.data && response.data.status === true) {
+        console.log('response.data.status', response.data.status);
+        toast.success('Register successfully.');
+        let convertedAddress = await EthereumService.convertAddressFromHex(
+          address
+        );
+        await dispatch(
+          saveLogin({ address: address, convertedAddress: convertedAddress })
+        );
+        var users = await EthereumService.users(address);
+        let userDetail = {
+          id: users?.id?.toString(),
+          referrer: users.referrer,
+          totalIncome: users.totalIncome.toString(),
+          currentActivatedLevel: users.currentActivatedLevel.toString(),
+        };
+        let res = await EthereumService.users(userDetail.referrer);
+        userDetail.referrerId = res.id?.toString();
+        //await dispatch(getUserTronWeb(address));
+        await dispatch(saveUserDetails(userDetail));
+        await lastLoginDetails(dispatch, address);
         dispatch(stopLoading());
-        let message = '';
-        if (error) {
-          if (error.error) {
-            message = error.error;
-            // console.log('message', message);
-            // console.log('message', message);
-            if (error.error === 'CONTRACT_VALALIDATE_ERROR') {
-              message = 'Insufficient funds in the account!';
-            }
-            toast.error(message);
-          } else if (error.message) {
-            message = error.message;
-            toast.error(error.message);
-          } else {
-            message = error;
-            toast.error(error);
-          }
-        }
+      } else {
+        dispatch(stopLoading());
+        toast.error('Something went wrong, try again');
         return false;
-      });
-  };
-}
+      }
+    }, 20000);
+  } catch (error) {
+    console.log(error, 'last');
+    dispatch(stopLoading());
+    let message = '';
+    if (error) {
+      if (error.error) {
+        message = error.error;
+        // console.log('message', message);
+        // console.log('message', message);
+        if (
+          error.error === 'CONTRACT_VALALIDATE_ERROR' ||
+          error.error === 'BANDWITH_ERROR'
+        ) {
+          message = 'Insufficient funds in the account!';
+        }
+
+        toast.error(message);
+      } else if (error.message) {
+        message = error.message;
+        toast.error(error.message);
+      } else {
+        message = error;
+        toast.error(error);
+      }
+    }
+    return false;
+  }
+};
 
 export function poolPrice() {
   return async (dispatch, getState) => {
@@ -910,7 +914,9 @@ export function getAmount() {
       const {
         persist: { address, userDetails },
       } = getState();
+
       let r = await EthereumService.getAmount1(address);
+
       if (parseInt(userDetails.currentActivatedLevel) >= 2) {
         r = Number(r) / 1.1;
         dispatch(saveAmount(r.toFixed(2)));

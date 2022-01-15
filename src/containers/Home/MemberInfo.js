@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { unLockLevel, getAmount } from '../../redux/_actions/ethereum.action';
 import Moment from 'react-moment';
-import { toast } from "../../components/Toast/Toast";
+import { toast } from '../../components/Toast/Toast';
+import { EthereumService } from './../../Services/EthereumService';
 
 export class MemberInfo extends Component {
   state = {
@@ -14,10 +15,11 @@ export class MemberInfo extends Component {
   };
   componentDidMount = async () => {
     const { loggedIn, getAmount, userDetails } = this.props;
+    const len = await EthereumService.getInvestmentValues();
     if (loggedIn) {
       this.setState({ joinPoolConfirmation: true });
-      if( userDetails.currentActivatedLevel !== '4'){
-      await getAmount();
+      if (userDetails.currentActivatedLevel != len) {
+        await getAmount();
       }
     }
   };
@@ -55,35 +57,39 @@ export class MemberInfo extends Component {
     }
   };
   render() {
-    const { lastLoginDetails, amount,userDetails } = this.props;
+    const { lastLoginDetails, amount, userDetails } = this.props;
     return (
       <div className="teamRight_block summaryTable">
         <Header as="h3">Member Dashboard </Header>
-       { userDetails.currentActivatedLevel !== '4' && <div className="member_dashboard">
-          <label style={{ color: 'white' }}>Value</label>
-          <input type="number" value={amount} min={0} readOnly={true}></input>
-        </div>}
+        {userDetails.currentActivatedLevel !== '4' && (
+          <div className="member_dashboard">
+            <label style={{ color: 'white' }}>Value</label>
+            <input type="number" value={amount} min={0} readOnly={true}></input>
+          </div>
+        )}
 
         <List className="memberinfo">
-        { userDetails.currentActivatedLevel !== '4' && <List.Item>
-            <p></p>
-            {/* <p className="profile">
+          {userDetails.currentActivatedLevel !== '4' && (
+            <List.Item>
+              <p></p>
+              {/* <p className="profile">
               <img src={leader} /> <br />
               Current Level: 1
             </p>{' '} */}
-            <p>
-              {' '}
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  console.log('inputField', this.state.inputField);
-                  this.unLockLevel();
-                }}
-              >
-                Upgrade To Next Level
-              </button>
-            </p>
-          </List.Item>}
+              <p>
+                {' '}
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    console.log('inputField', this.state.inputField);
+                    this.unLockLevel();
+                  }}
+                >
+                  Upgrade To Next Level
+                </button>
+              </p>
+            </List.Item>
+          )}
           <List.Item>
             <p>Joined:</p>
             <p>

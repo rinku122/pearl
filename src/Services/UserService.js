@@ -53,8 +53,15 @@ const userDetails = (data) => {
 const userResponse = (address) => {
   return fetch('get', `${API_HOST}Transaction/getUserDetail/${address}`);
 };
+
+const checkUser = (address) => {
+  return fetch('get', `${API_HOST}Account/usersCheck/${address}`);
+};
 const userPlaceIncome = (address, level) => {
-  return fetch('get', `${API_HOST}Transaction/getNewUserPlaced/${address}/${level}`);
+  return fetch(
+    'get',
+    `${API_HOST}Transaction/getNewUserPlaced/${address}/${level}`
+  );
 };
 
 //
@@ -72,4 +79,5 @@ export const UserService = {
   userDetails,
   userResponse,
   userPlaceIncome,
+  checkUser,
 };

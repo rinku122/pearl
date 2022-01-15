@@ -81,9 +81,12 @@ class Header extends Component {
             </li>
             <li>
               <strong>
-                {userDetails.id === '1'
-                  ? '4'
-                  : userDetails.currentActivatedLevel}
+                {
+                  // userDetails.id === '1'
+                  //   ? '5'
+                  //   :
+                  userDetails.currentActivatedLevel
+                }
               </strong>
               <span>Current Level</span>
             </li>
