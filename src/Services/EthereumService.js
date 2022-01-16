@@ -151,9 +151,9 @@ const registration = (upline, address) => {
       registrationFees = String(
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
       );
-      // if (registrationFees > userBalance) {
-      //   throw 'Insufficient USDT';
-      // }
+      if (registrationFees > userBalance) {
+        throw 'Insufficient USDT';
+      }
       const feeLimit = 1000000000; //sun value
 
       let callValue = 0;
@@ -291,6 +291,14 @@ const unLockLevel = (address) => {
     try {
       const contract = await callContract();
       const callValue = await getAmount(address);
+      const contractUSDT = await callContractUSDT();
+      let userBalance = await contractUSDT.balanceOf(address).call();
+      userBalance = userBalance.toString();
+
+      if (Number(callValue) > Number(userBalance)) {
+        throw 'Insufficient USDT to buy level';
+      }
+
       console.log(callValue, 'callValue');
       const feeLimit = 1000 * 10 ** 6; //sun value
       let CALLVALUE = 0;

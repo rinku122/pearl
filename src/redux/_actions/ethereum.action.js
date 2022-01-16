@@ -957,6 +957,7 @@ export function unLockLevel() {
       }
     } catch (error) {
       dispatch(stopLoading());
+      toast.error(error);
       // console.log(error, 'mmmmmmmmmmmmmmmmmmmmmm');
     }
   };
