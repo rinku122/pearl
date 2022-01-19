@@ -29,7 +29,7 @@ import {
 import { saveLogin, saveUserDetail,  lastLoginDetails } from '../../redux/_actions/persist.action';
 import { DEFAULT_ADDRESS } from '../../_constants';
 
-import logo from '../../images/logo.png';
+import logo from '../../images/newproject.png';
 
 class Register extends Component {
   constructor(props) {
@@ -353,7 +353,7 @@ class Register extends Component {
               </Form>
               {/* <p><a href="/"> Login</a> with TRX100</p> */}
               <p>
-                <Link to={`${HOME_ROUTE}`}>Login</Link> with TRX100
+                <Link to={`${HOME_ROUTE}`}>Login</Link> with TRX10
               </p>
 
               <p className="messageTransaction">

@@ -156,7 +156,7 @@ export class Homepage extends Component {
                 <div className="teamRight_block">
                   <Grid columns={6}>
                     <Grid.Row className="fastPlanRow fastPlanRow2">
-                      <Header as="h3">TRX 100 </Header>
+                      <Header as="h3">TRX 10 </Header>
                       <div className="premiumBox">
                         <h4>
                           <img src={leader} width="43" />

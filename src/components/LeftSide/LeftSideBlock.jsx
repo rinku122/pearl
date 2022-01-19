@@ -3,7 +3,7 @@ import './LeftSideBlock.scss';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import logo from '../../images/logo.png';
+import logo from '../../images/newproject.png';
 import logob from '../../images/logo_black.png';
 import copyIcon from '../../images/icon_copyAddress.svg';
 import tronIcon from '../../images/tron-logo.svg';

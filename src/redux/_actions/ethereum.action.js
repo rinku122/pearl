@@ -265,7 +265,7 @@ export const regUserTronWeb = (address, upline) => async (dispatch) => {
     await EthereumService.registration(upline, address);
     setTimeout(async () => {
       const response = await UserService.checkUser(address);
-      if (response && response.data && response.data.status === true) {
+      if (response && response.data && response.data.status) {
         console.log('response.data.status', response.data.status);
         toast.success('Register successfully.');
         let convertedAddress = await EthereumService.convertAddressFromHex(
@@ -274,7 +274,7 @@ export const regUserTronWeb = (address, upline) => async (dispatch) => {
         await dispatch(
           saveLogin({ address: address, convertedAddress: convertedAddress })
         );
-        var users = await EthereumService.users(address);
+        const users = await EthereumService.users(address);
         let userDetail = {
           id: users?.id?.toString(),
           referrer: users.referrer,

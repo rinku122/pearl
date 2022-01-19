@@ -36,7 +36,7 @@ import {
 import {
   saveLogin1,
 } from '../../redux/_actions/ethereum.action';
-import logo from '../../images/logo.png';
+import logo from '../../images/newproject.png';
 
 class SignUp extends Component {
   constructor(props) {
@@ -400,7 +400,7 @@ class SignUp extends Component {
               </Form>
               <p>
                 {' '}
-                <Link to={`${HOME_ROUTE}register`}>Register</Link> with TRX100
+                <Link to={`${HOME_ROUTE}register`}>Register</Link> with TRX10
               </p>
               {/* Link */}
             </div>
