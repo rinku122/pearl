@@ -151,7 +151,8 @@ const registration = (upline, address) => {
       registrationFees = String(
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
       );
-      if (registrationFees > userBalance) {
+
+      if (Number(registrationFees) > Number(userBalance)) {
         throw 'Insufficient USDT';
       }
       const feeLimit = 1000000000; //sun value
