@@ -151,7 +151,11 @@ const registration = (upline, address) => {
       registrationFees = String(
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
       );
-      if (registrationFees > userBalance) {
+      console.log(
+        `registrationFees :${registrationFees}`,
+        `userBalance:${userBalance}`
+      );
+      if (Number(registrationFees) > Number(userBalance)) {
         throw 'Insufficient USDT';
       }
       const feeLimit = 1000000000; //sun value
@@ -291,10 +295,10 @@ const unLockLevel = (address) => {
     try {
       const contract = await callContract();
       const callValue = await getAmount(address);
+      console.log('ooooooooooooooooooo');
       const contractUSDT = await callContractUSDT();
       let userBalance = await contractUSDT.balanceOf(address).call();
       userBalance = userBalance.toString();
-
       if (Number(callValue) > Number(userBalance)) {
         throw 'Insufficient USDT to buy level';
       }
@@ -327,8 +331,11 @@ const getAmount = (address) => {
         .investmentAmount(address)
         .call()
         .then(async (result) => {
-          console.log(result.amounts, '==============result.toString()');
-          const result1 = result.amounts.toString();
+          // console.log(result.amounts, '==============result.toString()');
+          // const result1 = result.amounts.toString();
+          // resolve(result1);
+          console.log(result, '==============result.toString()');
+          const result1 = result.toString();
           resolve(result1);
         })
         .catch(reject);
@@ -345,9 +352,11 @@ const getAmount1 = (address) => {
         .investmentAmount(address)
         .call()
         .then(async (result) => {
-          //console.log(result.amounts,'==============result.toString()')
+          // const tronWeb = await callTronWeb();
+          // const result1 = await tronWeb.fromSun(result.amounts.toString());
+          // resolve(result1);
           const tronWeb = await callTronWeb();
-          const result1 = await tronWeb.fromSun(result.amounts.toString());
+          const result1 = await tronWeb.fromSun(result.toString());
           resolve(result1);
         })
         .catch(reject);

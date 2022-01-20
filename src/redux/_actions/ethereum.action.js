@@ -916,6 +916,7 @@ export function getAmount() {
       } = getState();
 
       let r = await EthereumService.getAmount1(address);
+      console.log('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr');
 
       if (parseInt(userDetails.currentActivatedLevel) >= 2) {
         r = Number(r) / 1.1;
