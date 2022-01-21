@@ -39,7 +39,7 @@ export class LevelFive extends Component {
                 <div className="teamRight_block">
                   <Grid columns={6}>
                     <Grid.Row className="fastPlanRow fastPlanRow2">
-                      <Header as="h3">TRX 100 </Header>
+                      <Header as="h3">TRX 10 </Header>
                       <h3>
                         {' '}
                         <Link to={`${HOME_ROUTE}auth/home`}>Back</Link>
