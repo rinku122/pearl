@@ -42,7 +42,12 @@ export class LevelFive extends Component {
                       <Header as="h3">TRX 10 </Header>
                       <h3>
                         {' '}
-                        <Link to={`${HOME_ROUTE}auth/home`}>Back</Link>
+                        <Link
+                          style={{ color: 'white' }}
+                          to={`${HOME_ROUTE}auth/home`}
+                        >
+                          Back
+                        </Link>
                       </h3>
                       <div className="premiumBox">
                         <h4>
