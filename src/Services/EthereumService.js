@@ -10,6 +10,7 @@ import {
 } from '../_constants';
 // import { getCookie } from "../_utils";
 import { socket } from '../App';
+import abi from './../Assets/myContractABI.json';
 
 import myContract from '../Assets/myContractABI.json';
 import { toast } from '../components/Toast/Toast';
@@ -60,12 +61,12 @@ const callContract = () => {
   return new Promise(async (resolve, reject) => {
     try {
       if (tronWeb) {
-        const myNewContract = await tronWeb.contract().at(CONTRACT_ADDRESS);
+        const myNewContract = await tronWeb.contract(abi, CONTRACT_ADDRESS);
         resolve(myNewContract);
       } else {
         const tronWeb2 = await setTronWeb();
         if (tronWeb2) {
-          const myNewContract = await tronWeb2.contract().at(CONTRACT_ADDRESS);
+          const myNewContract = await tronWeb2.contract(abi, CONTRACT_ADDRESS);
           // if (tronWeb.fullNode.host.indexOf('shasta') > -1) {
           //   return reject(new Error("Switch to mainnet network in tronlink"));
           // }
@@ -115,7 +116,7 @@ const getUsers = (address, pool) => {
       if (contract) {
         contract
           .users(address)
-          .call()
+          .call({ _isConstant: true })
           .then(async (result) => {
             console.log('userResult', result);
             // convert hex response to string for tron
@@ -146,7 +147,7 @@ const registration = (upline, address) => {
       userBalance = userBalance.toString();
       console.log(userBalance, 'userBalanceUSDT');
       let registrationFees = (
-        await contract.investmentArray(0).call()
+        await contract.investmentArray(0).call({ _isConstant: true })
       ).toString();
       registrationFees = String(
         Number(registrationFees) + (Number(registrationFees) * 10) / 100
@@ -192,7 +193,7 @@ const poolPrice = (pool) => {
       const contract = await callContract();
       contract
         .getPoolPrice(pool)
-        .call()
+        .call({ _isConstant: true })
         .then(async (result) => {
           resolve(result.price);
         })
@@ -206,7 +207,7 @@ const poolPrice = (pool) => {
 const getOwner = async () => {
   try {
     const contract = await callContract();
-    let owner = await contract.owner().call();
+    let owner = await contract.owner().call({ _isConstant: true });
     owner = owner.toString();
     return owner;
   } catch (error) {
@@ -216,7 +217,7 @@ const getOwner = async () => {
 const getInvestmentValues = async () => {
   try {
     const contract = await callContract();
-    let array = await contract.investmentValues().call();
+    let array = await contract.investmentValues().call({ _isConstant: true });
     return array.length;
   } catch (error) {
     console.log(error);
@@ -229,7 +230,7 @@ const purchasePool = (pool) => {
     try {
       const callValue = await poolPrice(pool);
       // value = calculateFee(value);
-      const contract = await callContract();
+      const contract = await callContract({ _isConstant: true });
 
       const feeLimit = 1000000000; //sun value
       // console.log(value, type, feeLimit, callValue);
@@ -256,7 +257,7 @@ const userIds = (id) => {
       const contract = await callContract();
       contract
         .userIds(id)
-        .call()
+        .call({ _isConstant: true })
         .then((result) => {
           resolve(result);
         })
@@ -273,7 +274,7 @@ const users = (address) => {
       const contract = await callContract();
       contract
         .users(address)
-        .call()
+        .call({ _isConstant: true })
         .then(async (result) => {
           // console.log(result, '=================result');
           const tronWeb = await callTronWeb();
@@ -329,7 +330,7 @@ const getAmount = (address) => {
       const contract = await callContract();
       contract
         .investmentAmount(address)
-        .call()
+        .call({ _isConstant: true })
         .then(async (result) => {
           // console.log(result.amounts, '==============result.toString()');
           // const result1 = result.amounts.toString();
@@ -350,7 +351,7 @@ const getAmount1 = (address) => {
       const contract = await callContract();
       contract
         .investmentAmount(address)
-        .call()
+        .call({ _isConstant: true })
         .then(async (result) => {
           // const tronWeb = await callTronWeb();
           // const result1 = await tronWeb.fromSun(result.amounts.toString());
@@ -371,7 +372,7 @@ const idToAddress = (address) => {
       const contract = await callContract();
       contract
         .userIds(address)
-        .call()
+        .call({ _isConstant: true })
         .then(async (result) => {
           resolve(result);
         })

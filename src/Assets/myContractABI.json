@@ -1,128 +1,147 @@
 [
 	{
-		"constant": false,
+		"anonymous": false,
 		"inputs": [
 			{
-				"name": "referrerAddress",
-				"type": "address"
-			}
-		],
-		"name": "registration",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
+				"indexed": true,
+				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"name": "pool",
+				"indexed": true,
+				"internalType": "uint8",
+				"name": "level",
 				"type": "uint8"
-			}
-		],
-		"name": "getUserDetails",
-		"outputs": [
-			{
-				"name": "userIncome",
-				"type": "uint256"
 			},
 			{
-				"name": "userId",
-				"type": "uint256"
+				"indexed": false,
+				"internalType": "bool",
+				"name": "status",
+				"type": "bool"
 			},
 			{
-				"name": "poolActiveStatus",
+				"indexed": false,
+				"internalType": "bool",
+				"name": "isSelfPurchased",
 				"type": "bool"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "LevelPurchased",
+		"type": "event"
 	},
 	{
-		"constant": true,
+		"anonymous": false,
 		"inputs": [
 			{
-				"name": "user",
+				"indexed": true,
+				"internalType": "address",
+				"name": "userAddress",
 				"type": "address"
-			}
-		],
-		"name": "isUserExists",
-		"outputs": [
+			},
 			{
-				"name": "",
-				"type": "bool"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"name": "",
+				"indexed": true,
+				"internalType": "address",
+				"name": "referrerAddress",
 				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "currentUserId",
-		"outputs": [
+			},
 			{
-				"name": "",
+				"indexed": true,
+				"internalType": "uint8",
+				"name": "level",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "income",
 				"type": "uint256"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
+		"name": "MissedIncome",
+		"type": "event"
 	},
 	{
 		"anonymous": false,
 		"inputs": [
 			{
 				"indexed": false,
-				"name": "user",
+				"internalType": "address",
+				"name": "userAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
-				"name": "referrer",
+				"internalType": "address",
+				"name": "referrerAddress",
 				"type": "address"
 			},
 			{
 				"indexed": false,
+				"internalType": "address",
+				"name": "parent",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "level",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "place",
+				"type": "uint256"
+			}
+		],
+		"name": "NewUserPlaced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "referrerAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
 				"name": "userId",
 				"type": "uint256"
 			},
 			{
 				"indexed": false,
+				"internalType": "uint256",
 				"name": "referrerId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "referralCount",
 				"type": "uint256"
 			}
 		],
@@ -133,74 +152,370 @@
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": false,
+				"indexed": true,
+				"internalType": "address",
 				"name": "userAddress",
 				"type": "address"
 			},
 			{
-				"indexed": false,
+				"indexed": true,
+				"internalType": "address",
 				"name": "referrerAddress",
 				"type": "address"
 			},
 			{
-				"indexed": false,
+				"indexed": true,
+				"internalType": "uint8",
 				"name": "level",
 				"type": "uint8"
 			},
 			{
 				"indexed": false,
-				"name": "position",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "pool",
-				"type": "uint8"
-			},
-			{
-				"indexed": false,
-				"name": "reinvestCount",
+				"internalType": "uint256",
+				"name": "income",
 				"type": "uint256"
 			}
 		],
-		"name": "UpdateMatrix",
+		"name": "UserIncome",
 		"type": "event"
 	},
 	{
-		"anonymous": false,
+		"inputs": [],
+		"name": "USDTAddress",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
-				"indexed": false,
-				"name": "receiver",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "receiverId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "value",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "pool",
-				"type": "uint8"
-			},
-			{
-				"indexed": false,
+				"internalType": "uint256",
 				"name": "level",
-				"type": "uint8"
+				"type": "uint256"
 			},
 			{
-				"indexed": false,
-				"name": "levelReferralCount",
+				"internalType": "uint64",
+				"name": "price",
+				"type": "uint64"
+			}
+		],
+		"name": "changeLevelPrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "currentUserId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "LevelIncome",
-		"type": "event"
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "ownerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "_USDT",
+				"type": "address"
+			}
+		],
+		"name": "initialize",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "investmentAmount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "amounts",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "investmentArray",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "investmentValues",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "isUserExists",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "purchaseLevel",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "receive",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "referrerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "registration",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_level",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_pos",
+				"type": "uint256"
+			}
+		],
+		"name": "seeLevelPos",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "setOwner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalIncome",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "user",
+				"type": "address"
+			}
+		],
+		"name": "transact",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userIds",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "users",
+		"outputs": [
+			{
+				"internalType": "uint64",
+				"name": "id",
+				"type": "uint64"
+			},
+			{
+				"internalType": "address",
+				"name": "referrer",
+				"type": "address"
+			},
+			{
+				"internalType": "uint8",
+				"name": "reffralLevels",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint16",
+				"name": "position",
+				"type": "uint16"
+			},
+			{
+				"internalType": "uint8",
+				"name": "currentActivatedLevel",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "totalIncome",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "currentReferrer",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]
