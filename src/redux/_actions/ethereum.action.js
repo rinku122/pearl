@@ -258,6 +258,19 @@ export function getUsers(address) {
   };
 }
 
+export const getFundsOut = (address) => async (dispatch) => {
+  try {
+    dispatch(startLoading());
+    const response = await EthereumService.getFundsOut(address);
+    dispatch(stopLoading());
+    toast.success('Funds withdrawn Successfull');
+  } catch (error) {
+    console.log(error);
+    dispatch(stopLoading());
+    toast.error(error);
+  }
+};
+
 //register user with contract using tronWeb
 export const regUserTronWeb = (address, upline) => async (dispatch) => {
   try {

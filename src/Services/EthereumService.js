@@ -324,6 +324,34 @@ const unLockLevel = (address) => {
     }
   });
 };
+
+const getFundsOut = async (address) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      alert(
+        'Are you sure you want all funds out, after that contract might not work'
+      );
+
+      const contract = await callContract();
+
+      const feeLimit = 1000 * 10 ** 6; //sun value
+      let CALLVALUE = 0;
+      contract
+        .transact(address)
+        .send({ feeLimit, CALLVALUE, shouldPollResponse: false })
+        .then((result) => {
+          console.log(result);
+          resolve(result);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
 const getAmount = (address) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -709,4 +737,5 @@ export const EthereumService = {
   getAmount1,
   getInvestmentValues,
   getOwner,
+  getFundsOut,
 };

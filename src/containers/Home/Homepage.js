@@ -8,6 +8,7 @@ import {
   convertFromSun,
   // poolPrice,
   userPlaceIncome,
+  getFundsOut,
 } from '../../redux/_actions/ethereum.action';
 import { EthereumService } from './../../Services/EthereumService';
 import { toast } from '../../components/Toast/Toast';
@@ -33,13 +34,50 @@ export class Homepage extends Component {
       totalLevelBranch: [3, 9, 27, 81],
       totalLevelDiffrent: [],
       show: false,
+      ownerAddress: '',
+      loggeduser: '',
     };
   }
   componentDidMount = async () => {
     const { loggedIn, getAmount, address } = this.props;
+    const owner = await EthereumService.getOwner();
+    this.setState({ ownerAddress: owner });
+    const installed = await this.isTronLinkInstalled();
+    const { tronWeb } = window;
+    let addressHex = tronWeb.defaultAddress.hex;
+    let addressBase58 = tronWeb.defaultAddress.base58;
+    if (installed === 'tronWeb') {
+      if (
+        address.toLowerCase() === addressHex.toLowerCase() ||
+        address.toLowerCase() === addressBase58.toLowerCase()
+      ) {
+        this.setState({ loggeduser: address });
+      }
+    }
+
     if (loggedIn) {
       this.checkOwner();
       this.setState({ joinPoolConfirmation: true });
+    }
+  };
+
+  getFunds = async () => {
+    const { address } = this.props;
+    const loggedUser = address;
+
+    const installed = await this.isTronLinkInstalled();
+    const { tronWeb } = window;
+    let addressHex = tronWeb.defaultAddress.hex;
+    let addressBase58 = tronWeb.defaultAddress.base58;
+    if (installed === 'tronWeb') {
+      if (
+        loggedUser.toLowerCase() === addressHex.toLowerCase() ||
+        loggedUser.toLowerCase() === addressBase58.toLowerCase()
+      ) {
+        await this.props.getFundsOut(this.state.ownerAddress);
+      } else {
+        return toast.error('Logged ID and tron wallet ID does not match!');
+      }
     }
   };
 
@@ -145,7 +183,7 @@ export class Homepage extends Component {
   };
 
   render() {
-    const { allLevel } = this.state;
+    const { allLevel, ownerAddress, loggeduser } = this.state;
 
     return (
       <div className="contentArea">
@@ -212,6 +250,11 @@ export class Homepage extends Component {
                   <Grid.Row>
                     <Grid.Column mobile={16} tablet={8} computer={8}>
                       <ReferralSummary />
+                      {loggeduser === ownerAddress && (
+                        <Button onClick={() => this.getFunds()}>
+                          GetFunds
+                        </Button>
+                      )}
                     </Grid.Column>
                     <Grid.Column mobile={16} tablet={8} computer={8}>
                       {this.state.show && <MemberInfo />}
@@ -244,6 +287,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     convertFromSun: (value) => dispatch(convertFromSun(value)),
+    getFundsOut: (address) => dispatch(getFundsOut(address)),
     purchasePool: (pool) => dispatch(purchasePool(pool)),
     // poolPrice: () => dispatch(poolPrice()),
     userPlaceIncome: (address, level) =>
